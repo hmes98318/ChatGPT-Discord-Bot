@@ -1,0 +1,33 @@
+{
+    "name": "chatgpt-bot",
+    "version": "0.1.0",
+    "description": "A Discord bot based on ChatGPT",
+    "main": "index.js",
+    "scripts": {
+        "start": "node ./index.js",
+        "start:ts": "npm run build && node ./dist/test.js",
+        "build": "tsc"
+    },
+    "type": "module",
+    "repository": {
+        "type": "git",
+        "url": "git+https://github.com/hmes98318/ChatGPT-Bot.git"
+    },
+    "author": "hmes98318",
+    "license": "GPL-3.0",
+    "bugs": {
+        "url": "https://github.com/hmes98318/ChatGPT-Bot/issues"
+    },
+    "homepage": "https://github.com/hmes98318/ChatGPT-Bot#readme",
+    "dependencies": {
+        "chatgpt": "^2.0.6",
+        "discord.js": "^14.7.1",
+        "dotenv": "^16.0.3",
+        "ts-node": "^10.9.1"
+    },
+    "devDependencies": {
+        "@types/dotenv": "^8.2.0",
+        "@types/node": "^18.11.13",
+        "typescript": "^4.9.4"
+    }
+}
