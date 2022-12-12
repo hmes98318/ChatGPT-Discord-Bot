@@ -1,26 +1,26 @@
 # ChatGPT-Bot
-A Discord bot based on ChatGPT
+A Discord bot based on OpenAI Node.js library to build
 
 
 ### Usage
 Slash Commands:  
  * `/chat <message>` : chat with the ChatAI Bot
+ * `/help` : get command help
 
 Text Commands:  
  * `<prefix>chat`
+ * `<prefix>help`
 
 
 ### Configure environment
 [`.env`](./.env)  
 ```env
+PREFIX = "?"
 TOKEN = "discord_bot_token"
-SESSION_TOKEN = 
+OPENAI_API_TOKEN = "OpenAI_api_key"
 ```
 
-### To get a session token:
- * Go to https://chat.openai.com/chat and log in or sign up.
- * Open dev tools.
- * Open `Application` > `Cookies`.
- * Copy the value for `__Secure-next-auth.session-token` and save it to your environment.
-
-![session-token](./imgs/session-token.png)
+### Get the OpenAI api key:
+ * Go to https://beta.openai.com/account/api-keys and log in or sign up.
+ * Create new secret key.
+ * Copy the secret key to `OPENAI_API_TOKEN`.
