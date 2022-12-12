@@ -1,20 +1,28 @@
 import dotenv from 'dotenv';
-import { ChatGPTAPI } from "chatgpt";
+import { Configuration, OpenAIApi } from "openai";
 
 dotenv.config()
 
 
-// sessionToken is required; see below for details
-const api = new ChatGPTAPI({
-    sessionToken: String(process.env.SESSION_TOKEN)
-})
+const configuration = new Configuration({ apiKey: process.env.OPENAI_API_TOKEN });
+const openai = new OpenAIApi(configuration);
 
-const chatGPT = async (issue) => {
+const OPENAI_API_MODEL = "text-davinci-003";
+const OPENAI_API_MAX_TOKEN = 1024;
+const TIMEOUT = 30000; // 30s
 
-    await api.ensureAuth();
-    const response = await api.sendMessage(String(issue));
-    return response;
+
+const chatGPT = async (message) => {
+
+    const response = await openai.createCompletion({
+        model: OPENAI_API_MODEL,
+        prompt: message,
+        max_tokens: OPENAI_API_MAX_TOKEN
+    },
+        { timeout: TIMEOUT }
+    );
+
+    const result = response.data.choices[0].text;
+    return result;
 }
-
-
 export default chatGPT;

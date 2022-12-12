@@ -1,17 +1,20 @@
 'use strict';
 
-import path from 'path';
 import dotenv from 'dotenv';
-
 import { Client, GatewayIntentBits, Collection } from 'discord.js';
 
+// events
 import ready from './src/events/ready.js';
 import messageCreate from './src/events/messageCreate.js';
 import interactionCreate from './src/events/interactionCreate.js';
 
+// commands
 import chat from './src/commands/chat.js';
+import server from './src/commands/server.js';
+import help from './src/commands/help.js';
 
 dotenv.config();
+
 
 let client = new Client({
     intents: [
@@ -22,11 +25,12 @@ let client = new Client({
         GatewayIntentBits.GuildVoiceStates,
     ]
 });
+client.commands = new Collection();
+
 
 client.config = {
-    prefix: '-'
+    prefix: process.env.PREFIX || '?'
 };
-client.commands = new Collection();
 
 
 
@@ -49,11 +53,12 @@ const loadCommands = () => {
     return new Promise((resolve, reject) => {
         try {
             client.commands.set('chat', chat);
+            client.commands.set('server', server);
+            client.commands.set('help', help);
         } catch (error) {
             reject(error);
         }
         resolve();
-
     })
 }
 

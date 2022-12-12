@@ -15,6 +15,7 @@ const messageCreate = (client, message) => {
 
     if (cmd) {
         console.log(`${message.author.username} : ${message.content}`);
+        message.channel.sendTyping();
         cmd.execute(client, message, args);
     }
 };
