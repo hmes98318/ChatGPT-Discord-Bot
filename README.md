@@ -29,5 +29,6 @@ OPENAI_API_TOKEN = "OpenAI_api_key"
 
 ### Example
 Example bot [invite link](https://discord.com/api/oauth2/authorize?client_id=1051826756862099576&permissions=414464727104&scope=bot%20applications.commands).  
-![img1](./imgs/img1.png)
-![img2](./imgs/img2.png)
+
+<img src="/imgs/img1.png" alt="img1" width="700"/>
+<img src="/imgs/img2.png" alt="img2" width="700"/>
