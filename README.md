@@ -1,5 +1,6 @@
 # ChatGPT-Bot
-A Discord bot based on OpenAI Node.js library to build
+A Discord bot based on OpenAI Node.js library to build  
+**NOTE**: There is not using the official/unoffical ChatGPT API so this Bot is using the Davinci model.  
 
 
 ### Usage
@@ -24,3 +25,9 @@ OPENAI_API_TOKEN = "OpenAI_api_key"
  * Go to https://beta.openai.com/account/api-keys and log in or sign up.
  * Create new secret key.
  * Copy the secret key to `OPENAI_API_TOKEN`.
+
+
+### Example
+Example bot [invite link](https://discord.com/api/oauth2/authorize?client_id=1051826756862099576&permissions=414464727104&scope=bot%20applications.commands).  
+![img1](./imgs/img1.png)
+![img2](./imgs/img2.png)
