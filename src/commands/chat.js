@@ -6,7 +6,7 @@ const GET_PROBLEMS = 'The service is experiencing some problems, please try agai
 export default {
     name: 'chat',
     aliases: ['c'],
-    method : 'chat <message>',
+    method: 'chat <message>',
     description: 'chat with chatAI',
     options: [
         {
@@ -18,14 +18,18 @@ export default {
     ],
 
     async execute(client, message, args) {
-        if (!args[0] || args[0] === '') return;
 
-        message.channel.sendTyping();
+        if (!args[0] || args[0] === '')
+            return message.reply({ content: `❌ | Please enter valid message.`, allowedMentions: { repliedUser: false } });
+
 
         try {
+            message.channel.sendTyping();
             let result = await chatGPT(args.join(' '));
 
             if (result === '') result = GET_PROBLEMS; // Discord can't send empty message
+
+            (result.length >= 1950) ? result.substring(0, 1950) + '...' : result; // Discord can't send over 2000 length string
 
             console.log(`ChatGPT: Responded.`);
             return message.reply({ content: result, allowedMentions: { repliedUser: false } });
@@ -40,12 +44,13 @@ export default {
 
     async slashExecute(client, interaction) {
 
-        await interaction.deferReply(); // message delay send
-
         try {
+            await interaction.deferReply(); // message delay send
             let result = await chatGPT(interaction.options.getString("message"));
 
             if (result === '') result = GET_PROBLEMS;
+
+            (result.length >= 1950) ? result.substring(0, 1950) + '...' : result;
 
             console.log(`ChatGPT: Responded.`);
             return interaction.editReply({ content: result, allowedMentions: { repliedUser: false } });
