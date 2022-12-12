@@ -31,7 +31,7 @@ const ready = async (client) => {
         }
     }));
     
-    //client.user.setActivity(client.config.playing);
+    client.user.setActivity(client.config.playing);
     console.log(`>>> Logged in as ${client.user.username}`);
 };
 export default ready;

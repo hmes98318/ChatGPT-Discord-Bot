@@ -29,7 +29,8 @@ client.commands = new Collection();
 
 
 client.config = {
-    prefix: process.env.PREFIX || '?'
+    prefix: process.env.PREFIX || '?',
+    playing: process.env.PLAYING || `${process.env.PREFIX}help`
 };
 
 
