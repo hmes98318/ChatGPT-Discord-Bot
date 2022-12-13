@@ -29,7 +29,7 @@ export default {
 
             if (result === '') result = GET_PROBLEMS; // Discord can't send empty message
 
-            (result.length >= 1950) ? result.substring(0, 1950) + '...' : result; // Discord can't send over 2000 length string
+            result = (result.length >= 1950) ? result.substring(0, 1950) + ' ...' : result; // Discord can't send over 2000 length string
 
             console.log(`ChatGPT: Responded.`);
             return message.reply({ content: result, allowedMentions: { repliedUser: false } });
@@ -50,7 +50,7 @@ export default {
 
             if (result === '') result = GET_PROBLEMS;
 
-            (result.length >= 1950) ? result.substring(0, 1950) + '...' : result;
+            result = (result.length >= 1950) ? result.substring(0, 1950) + ' ...' : result;
 
             console.log(`ChatGPT: Responded.`);
             return interaction.editReply({ content: result, allowedMentions: { repliedUser: false } });
