@@ -1,6 +1,7 @@
 'use strict';
 
 import dotenv from 'dotenv';
+import consoleStamp from 'console-stamp';
 import { Client, GatewayIntentBits, Collection } from 'discord.js';
 
 // events
@@ -14,6 +15,7 @@ import server from './src/commands/server.js';
 import help from './src/commands/help.js';
 
 dotenv.config();
+consoleStamp(console, { format: ':date(yyyy/mm/dd HH:MM:ss.l)' });
 
 
 let client = new Client({
