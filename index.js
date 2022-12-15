@@ -39,6 +39,7 @@ client.config = {
 
 
 const loadEvents = () => {
+    console.log(`-> loading events ......`);
     return new Promise((resolve, reject) => {
         try {
             client.on('ready', ready.bind(null, client));
@@ -48,7 +49,7 @@ const loadEvents = () => {
             reject(error);
         }
         resolve();
-    })
+    });
 }
 
 const loadCommands = () => {
@@ -62,7 +63,7 @@ const loadCommands = () => {
             reject(error);
         }
         resolve();
-    })
+    });
 }
 
 
