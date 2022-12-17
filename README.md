@@ -23,8 +23,20 @@ npm install
 PREFIX = "?"
 PLAYING = "?help"
 TOKEN = "discord_bot_token"
-OPENAI_API_TOKEN = "OpenAI_api_key"
+OPENAI_API_TOKEN = 
+
+OPENAI_API_MODEL = "text-davinci-003"
+OPENAI_API_MAX_TOKEN = 1000
+OPENAI_TIMEOUT = 30
+
+MAX_REPLY_COUNT = 5
+MAX_TEXT_LENGTH = 1000
 ```
+`OPENAI_API_MODEL`: GPT-3 models list https://beta.openai.com/docs/models.  
+`OPENAI_API_MAX_TOKEN`: Bot maximum reply message length.  
+`OPENAI_TIMEOUT`: Reply message maximum waiting timeout.  
+`MAX_REPLY_COUNT`: Number of previous messages the bot remembers.  
+`MAX_TEXT_LENGTH`: Maximum send message length.  
 
 #### Get the OpenAI api key :
  * Go to https://beta.openai.com/account/api-keys and log in or sign up.
