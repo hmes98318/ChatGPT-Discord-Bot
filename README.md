@@ -1,6 +1,6 @@
 # ChatGPT-Bot
 A Discord bot based on OpenAI Node.js library to build  
-**NOTE**: There is not using the official/unoffical ChatGPT API so this Bot is using the Davinci model.  
+**NOTE**: This Bot is using the OpenAI Davinci model, so there is not using the official/unoffical ChatGPT API.  
 
 
 ## Installation
@@ -44,6 +44,12 @@ MAX_TEXT_LENGTH = 1000
  * Copy the secret key to `OPENAI_API_TOKEN`.
 
 
+## Running the script 
+```
+npm run start
+```
+
+
 ## Usage
 Text Commands:  
  * `?chat <message>` : chat with the ChatAI Bot
@@ -52,8 +58,14 @@ Text Commands:
 Slash Commands:  
  * `/chat`
  * `/help`
+ 
+**NOTE**: The remember effect is only useful when using Text Commands Reply.  
+You have to reply to the previous message to trigger but it will increase the consumption of tokens.
 
 
 ## Example
 <img src="/imgs/img1.png" alt="img1" width="700"/>
 <img src="/imgs/img2.png" alt="img2" width="700"/>
+
+#### Remember previous few one message example
+<img src="/imgs/img3.png" alt="img3" width="700"/>
