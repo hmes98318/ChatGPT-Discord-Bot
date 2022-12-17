@@ -4,6 +4,7 @@ import Discord from 'discord.js';
 export default {
     name: 'server',
     aliases: ['s'],
+    showHelp: false,
     method : 'server',
     description: 'Show currently active servers',
     options: [],
@@ -24,7 +25,7 @@ export default {
     },
 
     async slashExecute(client, interaction) {
-        return interaction.reply(
+        return interaction.editReply(
             {
                 embeds: [
                     new Discord.EmbedBuilder()

@@ -45,7 +45,6 @@ export default {
     async slashExecute(client, interaction) {
 
         try {
-            await interaction.deferReply(); // message delay send
             let result = await chatGPT(interaction.options.getString("message"));
 
             if (result === '') result = GET_PROBLEMS;

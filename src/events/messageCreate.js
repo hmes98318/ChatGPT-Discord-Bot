@@ -1,4 +1,4 @@
-const messageCreate = (client, message) => {
+const messageCreate = async (client, message) => {
 
     if (message.author.bot || message.channel.type === 'dm')
         return;
@@ -15,7 +15,7 @@ const messageCreate = (client, message) => {
 
     if (cmd) {
         console.log(`${message.author.username} : ${message.content}`);
-        message.channel.sendTyping();
+        await message.channel.sendTyping();
         cmd.execute(client, message, args);
     }
 };

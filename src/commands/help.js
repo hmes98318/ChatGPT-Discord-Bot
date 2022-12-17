@@ -28,7 +28,7 @@ export default {
         const commands = client.commands.filter(x => x.showHelp !== false);
         let description = `**Text Commands**\n` + commands.map(x => `• \`${prefix}${x.method}\``).join('\n') + '\n\n' + `**Slash Commands**\n` + commands.map(x => `• \`/${x.method}\``).join('\n');
 
-        return interaction.reply({ embeds: [Embed_help(title, thumbnail, description)], allowedMentions: { repliedUser: false } });
+        return interaction.editReply({ embeds: [Embed_help(title, thumbnail, description)], allowedMentions: { repliedUser: false } });
     },
 };
 
