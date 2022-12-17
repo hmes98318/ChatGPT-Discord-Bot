@@ -33,13 +33,13 @@ OPENAI_API_TOKEN = "OpenAI_api_key"
 
 
 ## Usage
-Slash Commands:  
- * `/chat <message>` : chat with the ChatAI Bot
- * `/help` : get command help
-
 Text Commands:  
- * `?chat`
- * `?help`
+ * `?chat <message>` : chat with the ChatAI Bot
+ * `?help` : get command help
+
+Slash Commands:  
+ * `/chat`
+ * `/help`
 
 
 ## Example
