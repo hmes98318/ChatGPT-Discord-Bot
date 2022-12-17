@@ -22,7 +22,7 @@ const ready = async (client) => {
 
 
     console.log(`+---------------------+`);
-    console.log(`| ${client.config.bot_name}: ${color.cyan}${client.status.bot_version}${color.white}\t|`);
+    console.log(`| ${client.status.bot_name}: ${color.cyan}${client.status.bot_version}${color.white}\t|`);
     console.log(`| Node.js: ${color.cyan}${client.status.node_version}${color.white}\t|`);
     console.log(`| Discord.js: ${color.cyan}${client.status.discord_version}${color.white}\t|`);
     console.log(`+---------------------+`);

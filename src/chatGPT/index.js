@@ -1,16 +1,16 @@
 import dotenv from 'dotenv';
 import { Configuration, OpenAIApi } from 'openai';
 
-dotenv.config()
+dotenv.config();
 
 
 const configuration = new Configuration({ apiKey: String(process.env.OPENAI_API_TOKEN) });
 const openai = new OpenAIApi(configuration);
 
 /**
- * Default configuration
+ * Default values
  * OPENAI_API_MODEL = 'text-davinci-003'
- * OPENAI_API_MAX_TOKEN = 1024
+ * OPENAI_API_MAX_TOKEN = 1000
  * OPENAI_TIMEOUT = 30
  */
 const OPENAI_API_MODEL = typeof (process.env.OPENAI_API_MODEL) === 'undefined' ? 'text-davinci-003' : String(process.env.OPENAI_API_MODEL);

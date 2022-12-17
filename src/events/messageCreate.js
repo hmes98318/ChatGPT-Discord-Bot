@@ -14,7 +14,7 @@ const messageCreate = async (client, message) => {
     const cmd = client.commands.get(command) || client.commands.find(cmd => cmd.aliases && cmd.aliases.includes(command));
 
     if (cmd) {
-        console.log(`${message.author.username} : ${message.content}`);
+        console.log(`(\x1B[2m${message.guild.name}\x1B[0m) ${message.author.username} : ${message.content}`);
         await message.channel.sendTyping();
         cmd.execute(client, message, args);
     }
