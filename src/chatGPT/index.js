@@ -1,5 +1,5 @@
 import dotenv from 'dotenv';
-import { Configuration, OpenAIApi } from "openai";
+import { Configuration, OpenAIApi } from 'openai';
 
 dotenv.config()
 
@@ -7,9 +7,15 @@ dotenv.config()
 const configuration = new Configuration({ apiKey: String(process.env.OPENAI_API_TOKEN) });
 const openai = new OpenAIApi(configuration);
 
-const OPENAI_API_MODEL = String(process.env.OPENAI_API_MODEL) || "text-davinci-003";
-const OPENAI_API_MAX_TOKEN = Number(process.env.OPENAI_API_MAX_TOKEN) || 1024;
-const OPENAI_TIMEOUT = Number(process.env.OPENAI_TIMEOUT) || 30; // 30s
+/**
+ * Default configuration
+ * OPENAI_API_MODEL = 'text-davinci-003'
+ * OPENAI_API_MAX_TOKEN = 1024
+ * OPENAI_TIMEOUT = 30
+ */
+const OPENAI_API_MODEL = typeof (process.env.OPENAI_API_MODEL) === 'undefined' ? 'text-davinci-003' : String(process.env.OPENAI_API_MODEL);
+const OPENAI_API_MAX_TOKEN = typeof (process.env.OPENAI_API_MAX_TOKEN) === 'undefined' ? 1024 : Number(process.env.OPENAI_API_MAX_TOKEN);
+const OPENAI_TIMEOUT = typeof (process.env.OPENAI_TIMEOUT) === 'undefined' ? 30 : Number(process.env.OPENAI_TIMEOUT);
 
 
 const chatGPT = async (message) => {
