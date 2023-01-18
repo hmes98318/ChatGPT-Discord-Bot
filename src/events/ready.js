@@ -21,21 +21,26 @@ export default async (client) => {
     };
 
 
-    console.log(`+---------------------+`);
-    console.log(`| ${client.status.bot_name}: ${color.cyan}${client.status.bot_version}${color.white}\t|`);
-    console.log(`| Node.js: ${color.cyan}${client.status.node_version}${color.white}\t|`);
-    console.log(`| Discord.js: ${color.cyan}${client.status.discord_version}${color.white}\t|`);
-    console.log(`+---------------------+`);
+    const release = {
+        bot: `${client.status.bot_name}: ${color.cyan}${client.status.bot_version}${color.white}`,
+        nodejs: `Node.js: ${color.cyan}${client.status.node_version}${color.white}`,
+        djs: `Discord.js: ${color.cyan}${client.status.discord_version}${color.white}`
+    }
+    console.log(`+-----------------------+`);
+    console.log(`| ${release.bot.padEnd(30, ' ')} |`);
+    console.log(`| ${release.nodejs.padEnd(30, ' ')} |`);
+    console.log(`| ${release.djs.padEnd(30, ' ')} |`);
+    console.log(`+-----------------------+`);
 
-    /*
-        client.application.commands.set(client.commands.map(cmd => {
-            return {
-                name: cmd.name,
-                description: cmd.description,
-                options: cmd.options
-            }
-        }));
-    */
+
+    client.application.commands.set(client.commands.map(cmd => {
+        return {
+            name: cmd.name,
+            description: cmd.description,
+            options: cmd.options
+        }
+    }));
+
     client.user.setActivity(client.config.playing);
     console.log(`>>> Logged in as ${client.user.username}`);
 };
