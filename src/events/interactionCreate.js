@@ -1,4 +1,4 @@
-const interactionCreate = async (client, int) => {
+export default async (client, int) => {
 
     if (int.isButton()) { }
     else {
@@ -12,4 +12,3 @@ const interactionCreate = async (client, int) => {
         }
     }
 };
-export default interactionCreate;

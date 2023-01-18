@@ -1,41 +1,41 @@
 import Discord from 'discord.js';
 
 
-export default {
-    name: 'server',
-    aliases: ['s'],
-    showHelp: false,
-    method : 'server',
-    description: 'Show currently active servers',
-    options: [],
+export const name = 'server';
+export const aliases = ['s'];
+export const showHelp = false;
+export const method = 'server';
+export const description = 'Show currently active servers';
+export const options = [];
 
-    execute(client, message) {
-        return message.reply(
-            {
-                embeds: [
-                    new Discord.EmbedBuilder()
-                        .setDescription(
-                            client.guilds.cache
-                                .map(g => `Guild Name: ${g.name}\n  Total Members: ${g.memberCount}\n Guild ID: ${g.id}`).join('\n\n')
-                        )
-                ],
-                allowedMentions: { repliedUser: false }
-            }
-        )
-    },
+export const execute = (client, message) => {
+    return message.reply(
+        {
+            embeds: [
+                new Discord.EmbedBuilder()
+                    .setDescription(
+                        client.guilds.cache
+                            .map(g => `Guild ID: ${g.id}\n Guild: ${g.name}\n Members: ${g.memberCount}`)
+                            .join('\n\n')
+                    )
+            ],
+            allowedMentions: { repliedUser: false }
+        }
+    )
+}
 
-    async slashExecute(client, interaction) {
-        return interaction.editReply(
-            {
-                embeds: [
-                    new Discord.EmbedBuilder()
-                        .setDescription(
-                            client.guilds.cache
-                                .map(g => `Guild Name: ${g.name}\n  Total Members: ${g.memberCount}\n Guild ID: ${g.id}`).join('\n\n')
-                        )
-                ],
-                allowedMentions: { repliedUser: false }
-            }
-        )
-    }
-};
+export const slashExecute = (client, interaction) => {
+    return interaction.editReply(
+        {
+            embeds: [
+                new Discord.EmbedBuilder()
+                    .setDescription(
+                        client.guilds.cache
+                            .map(g => `Guild ID: ${g.id}\n Guild: ${g.name}\n Members: ${g.memberCount}`)
+                            .join('\n\n')
+                    )
+            ],
+            allowedMentions: { repliedUser: false }
+        }
+    )
+}

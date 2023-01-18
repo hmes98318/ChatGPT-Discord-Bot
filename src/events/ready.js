@@ -8,7 +8,7 @@ import pkg from '../../package.json' assert { type: "json" };
 const color = { white: '\x1B[0m', cyan: '\x1B[36m' };
 
 
-const ready = async (client) => {
+export default async (client) => {
 
     client.status = {
         uptime: new Date(),
@@ -27,19 +27,19 @@ const ready = async (client) => {
     console.log(`| Discord.js: ${color.cyan}${client.status.discord_version}${color.white}\t|`);
     console.log(`+---------------------+`);
 
-
-    client.application.commands.set(client.commands.map(cmd => {
-        return {
-            name: cmd.name,
-            description: cmd.description,
-            options: cmd.options
-        }
-    }));
-
+    /*
+        client.application.commands.set(client.commands.map(cmd => {
+            return {
+                name: cmd.name,
+                description: cmd.description,
+                options: cmd.options
+            }
+        }));
+    */
     client.user.setActivity(client.config.playing);
     console.log(`>>> Logged in as ${client.user.username}`);
 };
-export default ready;
+
 
 
 

@@ -1,4 +1,4 @@
-const messageCreate = async (client, message) => {
+export default async (client, message) => {
 
     if (message.author.bot || message.channel.type === 'dm')
         return;
@@ -19,4 +19,3 @@ const messageCreate = async (client, message) => {
         cmd.execute(client, message, args);
     }
 };
-export default messageCreate;
