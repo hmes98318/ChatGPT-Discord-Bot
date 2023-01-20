@@ -1,0 +1,37 @@
+{
+    "compilerOptions": {
+        "incremental": true,
+        "target": "ES3",
+        "module": "commonjs",
+        "moduleResolution": "node",
+        "lib": [
+            "ES2022"
+        ],
+        "rootDirs": [
+            "src/chatGPT",
+            "src/commands",
+            "src/events"
+        ],
+        "outDir": "dist",
+        "resolveJsonModule": true,
+        "allowJs": false,
+        "checkJs": false,
+        "declaration": false,
+        "noEmit": false,
+        "isolatedModules": true,
+        "esModuleInterop": true,
+        "forceConsistentCasingInFileNames": true,
+        "strict": true,
+        "skipDefaultLibCheck": true,
+        "skipLibCheck": true
+    },
+    "include": [
+        "src/*.ts",
+        "src/**/*.ts"
+    ],
+    "exclude": [
+        "node_modules",
+        "dist",
+        "imgs"
+    ]
+}
