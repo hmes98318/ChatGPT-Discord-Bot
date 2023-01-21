@@ -1,17 +1,36 @@
-import os from 'os';
+import * as os from 'os';
 import { exec } from 'child_process';
-import Discord from 'discord.js'
 
-import pkg from '../../package.json' assert { type: "json" };
+import * as Discord from 'discord.js';
+import { Client } from "discord.js";
+
+import pkg from '../../package.json';
+
+
+declare module 'discord.js' {
+    export interface Client {
+        status: {
+            uptime: string,
+            os_version: string,
+            node_version: string,
+            discord_version: string,
+            bot_name: string,
+            bot_version: string,
+            cpu: string,
+        }
+    }
+}
+
+
 
 
 const color = { white: '\x1B[0m', cyan: '\x1B[36m' };
 
 
-export default async (client) => {
+export default async (client: Client) => {
 
     client.status = {
-        uptime: new Date(),
+        uptime: String(new Date()),
         os_version: await OSversion(),
         node_version: process.version,
         discord_version: `v${Discord.version}`,
@@ -33,7 +52,7 @@ export default async (client) => {
     console.log(`+-----------------------+`);
 
 
-    client.application.commands.set(client.commands.map(cmd => {
+    client.application?.commands.set(client.commands.map(cmd => {
         return {
             name: cmd.name,
             description: cmd.description,
@@ -41,21 +60,21 @@ export default async (client) => {
         }
     }));
 
-    client.user.setActivity(client.config.playing);
-    console.log(`>>> Logged in as ${client.user.username}`);
+    client.user?.setActivity(client.config.playing);
+    console.log(`>>> Logged in as ${client.user?.username}`);
 };
 
 
 
 
-const OSversion = () => {
+const OSversion = (): string | Promise<string> => {
     let platform = process.platform;
 
-    if (platform === "win32")
+    if (platform === "win32") {
         return os.type();
-
-    else if (platform === "linux")
-        return new Promise(function (resolve, reject) {
+    }
+    else if (platform === "linux") {
+        return new Promise<string>((resolve, reject) => {
             exec('cat /etc/*release | grep -E ^PRETTY_NAME',
                 (error, stdout, stderr) => {
                     if (error !== null) reject(error);
@@ -64,7 +83,8 @@ const OSversion = () => {
                     resolve(os_version);
                 });
         });
-
-    else
+    }
+    else {
         return process.platform;
+    }
 }

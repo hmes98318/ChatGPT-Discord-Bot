@@ -18,7 +18,7 @@ const OPENAI_API_MAX_TOKEN = typeof (process.env.OPENAI_API_MAX_TOKEN) === 'unde
 const OPENAI_TIMEOUT = typeof (process.env.OPENAI_TIMEOUT) === 'undefined' ? 30 : Number(process.env.OPENAI_TIMEOUT);
 
 
-const chatGPT = async (message) => {
+const chatGPT = async (message: string): Promise<string> => {
 
     const response = await openai.createCompletion({
         model: OPENAI_API_MODEL,
@@ -28,7 +28,7 @@ const chatGPT = async (message) => {
         { timeout: OPENAI_TIMEOUT * 1000 }
     );
 
-    const result = response.data.choices[0].text;
+    const result = String(response.data.choices[0].text);
     return result;
 }
 export default chatGPT;

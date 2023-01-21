@@ -1,4 +1,7 @@
-export default async (client, int) => {
+import { Client, Interaction } from "discord.js";
+
+
+export default async (client: Client, int: Interaction) => {
 
     if (int.isButton()) { }
     else {
@@ -6,7 +9,7 @@ export default async (client, int) => {
 
         const cmd = client.commands.get(int.commandName);
         if (cmd) {
-            console.log(`(\x1B[2m${int.member.guild.name}\x1B[0m) ${int.user.username} : /${int.commandName}`);
+            console.log(`(\x1B[2m${int.guild?.name}\x1B[0m) ${int.user.username} : /${int.commandName}`);
             await int.deferReply();
             cmd.slashExecute(client, int);
         }

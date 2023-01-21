@@ -1,5 +1,7 @@
-import dotenv from 'dotenv';
-import chatGPT from '../chatGPT/index.js';
+import * as dotenv from 'dotenv';
+import chatGPT from '../chatGPT';
+
+import { Client, Message, CommandInteraction } from "discord.js";
 
 dotenv.config();
 
@@ -29,7 +31,7 @@ export const options = [
     }
 ];
 
-export const execute = async (client, message, args) => {
+export const execute = async (client: Client, message: Message, args: string[]) => {
 
     if (!args[0] || args[0] === '')
         return message.reply({ content: `❌ | Please enter valid message.`, allowedMentions: { repliedUser: false } });
@@ -102,8 +104,8 @@ export const execute = async (client, message, args) => {
     }
 }
 
-export const slashExecute = async (client, interaction) => {
-    let requestMessage = interaction.options.getString("message");
+export const slashExecute = async (client: Client, interaction: CommandInteraction) => {
+    let requestMessage = String(interaction.options.get("message", true));
 
     if (requestMessage.length > MAX_TEXT_LENGTH)
         return interaction.editReply({ content: `❌ | Message length exceed ${MAX_TEXT_LENGTH}.`, allowedMentions: { repliedUser: false } });

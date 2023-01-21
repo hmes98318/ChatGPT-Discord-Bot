@@ -1,4 +1,5 @@
-import Discord from 'discord.js';
+import * as Discord from 'discord.js';
+import { Client, Message, CommandInteraction } from "discord.js";
 
 
 export const name = 'server';
@@ -8,7 +9,7 @@ export const method = 'server';
 export const description = 'Show currently active servers';
 export const options = [];
 
-export const execute = (client, message) => {
+export const execute = (client: Client, message: Message) => {
     return message.reply(
         {
             embeds: [
@@ -24,7 +25,7 @@ export const execute = (client, message) => {
     )
 }
 
-export const slashExecute = (client, interaction) => {
+export const slashExecute = (client: Client, interaction: CommandInteraction) => {
     return interaction.editReply(
         {
             embeds: [
