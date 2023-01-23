@@ -34,8 +34,8 @@ export default async (client: Client) => {
         os_version: await OSversion(),
         node_version: process.version,
         discord_version: `v${Discord.version}`,
-        bot_name: `${pkg.name}`,
-        bot_version: `v${pkg.version}`,
+        bot_name: `${pkg?.name || 'pkg error'}`,
+        bot_version: `v${pkg?.version || '0.0.0'}`,
         cpu: `${os.cpus()[0].model}`
     };
 
