@@ -1,9 +1,17 @@
 # ChatGPT-Bot
+<a href="https://www.typescriptlang.org/"><img src="https://img.shields.io/badge/typescript-%23007ACC.svg?style=for-the-badge&logo=typescript&logoColor=white" /></a> 
+<a href="https://discord.js.org/"><img src="https://img.shields.io/badge/Discord.JS-v14-blue?style=for-the-badge&logo=DISCORD" /></a> 
+<a href="https://github.com/hmes98318/ChatGPT-Bot/blob/main/LICENSE"><img alt="GitHub" src="https://img.shields.io/github/license/hmes98318/ChatGPT-Bot?style=for-the-badge"></a>  
+
 A Discord bot based on OpenAI Node.js library to build  
 **NOTE**: This Bot is using the OpenAI Davinci model, so there is not using the official/unoffical ChatGPT API.  
 
 
 ## Installation
+### Precondition
+ * TypeScript `4.9`
+ * Node.js `v18`
+
 ### Clone the repository
 ```
 git clone https://github.com/hmes98318/ChatGPT-Bot.git
@@ -11,13 +19,13 @@ git clone https://github.com/hmes98318/ChatGPT-Bot.git
 or [**click here**](https://github.com/hmes98318/ChatGPT-Bot/releases) to download
 
 ### Install the dependencies
-auto install all dependencies on [`package.json`](./package.json)  
+[`package.json`](./package.json)  
 ```
 npm install
 ```
 
 
-### Configure environment
+## Configure environment
 [`.env`](./.env)  
 ```env
 PREFIX = "?"
@@ -45,8 +53,13 @@ MAX_TEXT_LENGTH = 1000
 
 
 ## Running the script 
+Production
 ```
 npm run start
+```
+Development
+```
+npm run dev
 ```
 
 
