@@ -8,9 +8,7 @@
             "ES2022"
         ],
         "rootDirs": [
-            "src/chatGPT",
-            "src/commands",
-            "src/events"
+            "src/"
         ],
         "outDir": "dist",
         "resolveJsonModule": true,
