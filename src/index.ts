@@ -49,7 +49,7 @@ const color = {
 const loadEvents = () => {
     console.log(`-> loading Events ......`);
     return new Promise<void>(async (resolve, reject) => {
-        const events = fs.readdirSync(`${__dirname}/events/`);//.filter(file => file.endsWith('.ts'));
+        const events = fs.readdirSync(`${__dirname}/events/`);
 
         console.log(`+--------------------------------+`);
         for (const file of events) {
@@ -72,7 +72,7 @@ const loadEvents = () => {
 const loadCommands = () => {
     console.log(`-> loading Commands ......`);
     return new Promise<void>(async (resolve, reject) => {
-        const jsFiles = fs.readdirSync(`${__dirname}/commands/`);//.filter(file => file.endsWith('.ts'));
+        const jsFiles = fs.readdirSync(`${__dirname}/commands/`);
 
         console.log(`+---------------------------+`);
         for (const file of jsFiles) {
