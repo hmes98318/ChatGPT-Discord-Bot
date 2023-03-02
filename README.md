@@ -3,8 +3,7 @@
 <a href="https://discord.js.org/"><img src="https://img.shields.io/badge/Discord.JS-v14-blue?style=for-the-badge&logo=DISCORD" /></a> 
 <a href="https://github.com/hmes98318/ChatGPT-Bot/blob/main/LICENSE"><img alt="GitHub" src="https://img.shields.io/github/license/hmes98318/ChatGPT-Bot?style=for-the-badge"></a>  
 
-A Discord bot based on OpenAI Node.js library to build  
-**NOTE**: This Bot is using the OpenAI Davinci model, so there is not using the official/unoffical ChatGPT API.  
+A Discord chatbot based on the OpenAI GPT3.5 model  
 
 
 ## Installation
@@ -14,12 +13,12 @@ A Discord bot based on OpenAI Node.js library to build
 
 ### Clone the repository
 ```
-git clone https://github.com/hmes98318/ChatGPT-Bot.git
+git clone https://github.com/hmes98318/ChatGPT-Discord-Bot.git
 ```
-or [**click here**](https://github.com/hmes98318/ChatGPT-Bot/releases) to download
+or [**click here**](https://github.com/hmes98318/ChatGPT-Discord-Bot/releases) to download
 
 ### Install the dependencies
-[`package.json`](./package.json)  
+install all the dependencies from [`package.json`](./package.json)  
 ```
 npm install
 ```
@@ -33,14 +32,16 @@ PLAYING = "?help"
 TOKEN = "discord_bot_token"
 OPENAI_API_TOKEN = 
 
-OPENAI_API_MODEL = "text-davinci-003"
+OPENAI_API_MODEL = "gpt-3.5-turbo"
+OPENAI_API_USER = "user"
 OPENAI_API_MAX_TOKEN = 1000
 OPENAI_TIMEOUT = 30
 
 MAX_REPLY_COUNT = 5
 MAX_TEXT_LENGTH = 1000
 ```
-`OPENAI_API_MODEL`: GPT-3 models list https://beta.openai.com/docs/models.  
+`OPENAI_API_MODEL`: GPT models list https://beta.openai.com/docs/models.  
+`OPENAI_API_USER` : Chat Completion Request Message Role Enum. [ `user` | `system` | `assistant` ]  
 `OPENAI_API_MAX_TOKEN`: Bot maximum reply message length.  
 `OPENAI_TIMEOUT`: Reply message maximum waiting timeout.  
 `MAX_REPLY_COUNT`: Number of previous messages the bot remembers.  
