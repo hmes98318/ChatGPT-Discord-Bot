@@ -1,5 +1,5 @@
 import * as dotenv from 'dotenv';
-import chatGPT from '../chatGPT';
+import chatGPT from '../openai/chatGPT';
 
 import { Client, Message, CommandInteraction } from "discord.js";
 
@@ -7,12 +7,12 @@ dotenv.config();
 
 
 /**
- * Default values
- * MAX_REPLY_COUNT = 5
- * MAX_TEXT_LENGTH = 1000
+ * --- Default values ---
+ * BOT_MAX_REPLY_COUNT = 5
+ * BOT_MAX_TEXT_LENGTH = 1000
  */
-const MAX_REPLY_COUNT = typeof (process.env.MAX_REPLY_COUNT) === 'undefined' ? 5 : Number(process.env.MAX_REPLY_COUNT);
-const MAX_TEXT_LENGTH = typeof (process.env.MAX_TEXT_LENGTH) === 'undefined' ? 1000 : Number(process.env.MAX_TEXT_LENGTH);
+const BOT_MAX_REPLY_COUNT = typeof (process.env.BOT_MAX_REPLY_COUNT) === 'undefined' ? 5 : Number(process.env.BOT_MAX_REPLY_COUNT);
+const BOT_MAX_TEXT_LENGTH = typeof (process.env.BOT_MAX_TEXT_LENGTH) === 'undefined' ? 1000 : Number(process.env.BOT_MAX_TEXT_LENGTH);
 
 const GET_PROBLEMS = 'The service is experiencing some problems, please try again.';
 
@@ -36,8 +36,8 @@ export const execute = async (client: Client, message: Message, args: string[]) 
     if (!args[0] || args[0] === '')
         return message.reply({ content: `❌ | Please enter valid message.`, allowedMentions: { repliedUser: false } });
 
-    if (args.join().length > MAX_TEXT_LENGTH)
-        return message.reply({ content: `❌ | Message length exceed ${MAX_TEXT_LENGTH}.`, allowedMentions: { repliedUser: false } });
+    if (args.join().length > BOT_MAX_TEXT_LENGTH)
+        return message.reply({ content: `❌ | Message length exceed ${BOT_MAX_TEXT_LENGTH}.`, allowedMentions: { repliedUser: false } });
 
 
     const prefixString = client.config.prefix + aliases;
@@ -50,9 +50,9 @@ export const execute = async (client: Client, message: Message, args: string[]) 
             let cacheReply = [];
             let currentMsg = message;
 
-            // Find the previous MAX_REPLY_COUNT reply messages
+            // Find the previous BOT_MAX_REPLY_COUNT reply messages
             let count = 0;
-            while (hasReply !== null && count < MAX_REPLY_COUNT) {
+            while (hasReply !== null && count < BOT_MAX_REPLY_COUNT) {
                 let relpyMsg = await currentMsg.fetchReference();
                 cacheReply.push(relpyMsg);
 
@@ -66,9 +66,9 @@ export const execute = async (client: Client, message: Message, args: string[]) 
                 .filter((msg) => msg.author.bot !== true && msg.content.startsWith(`${prefixString}`) && msg.content !== message.content)
                 .map((msg) => String(msg.content.split(' ').splice(1)).replaceAll(',', ' '));
 
-            // count total numbers of char, if > MAX_TEXT_LENGTH discard first reply message
+            // count total numbers of char, if > BOT_MAX_TEXT_LENGTH discard first reply message
             let textLength = filterReply.reduce((acc, str) => acc + str.length, 0);
-            while (textLength > MAX_TEXT_LENGTH) {
+            while (textLength > BOT_MAX_TEXT_LENGTH) {
                 filterReply.shift();
                 textLength = filterReply.reduce((acc, str) => acc + str.length, 0);
             }
@@ -107,8 +107,8 @@ export const execute = async (client: Client, message: Message, args: string[]) 
 export const slashExecute = async (client: Client, interaction: CommandInteraction) => {
     let requestMessage = String(interaction.options.get("message", true));
 
-    if (requestMessage.length > MAX_TEXT_LENGTH)
-        return interaction.editReply({ content: `❌ | Message length exceed ${MAX_TEXT_LENGTH}.`, allowedMentions: { repliedUser: false } });
+    if (requestMessage.length > BOT_MAX_TEXT_LENGTH)
+        return interaction.editReply({ content: `❌ | Message length exceed ${BOT_MAX_TEXT_LENGTH}.`, allowedMentions: { repliedUser: false } });
 
 
     try {
