@@ -3,7 +3,7 @@
 <a href="https://discord.js.org/"><img src="https://img.shields.io/badge/Discord.JS-v14-blue?style=for-the-badge&logo=DISCORD" /></a> 
 <a href="https://github.com/hmes98318/ChatGPT-Bot/blob/main/LICENSE"><img alt="GitHub" src="https://img.shields.io/github/license/hmes98318/ChatGPT-Bot?style=for-the-badge&color=green"></a>  
 
-A Discord chatbot based on the OpenAI GPT3.5 model  
+A Discord chatbot powered by OpenAI's [**GPT3.5**](https://platform.openai.com/docs/models/gpt-3-5) model and [**DALL·E**](https://platform.openai.com/docs/models/dall-e) image generation model.  
 
 
 ## Installation
@@ -39,6 +39,7 @@ BOT_MAX_TEXT_LENGTH = 1000
 
 # Image generation
 OPENAI_API_IMAGE_SIZE = "512x512"
+OPENAI_API_IMAGE_COUNT = 1
 OPENAI_API_IMAGE_RESPONSE_FORMAT = "url"
 
 # API setup
@@ -55,6 +56,7 @@ OPENAI_API_TIMEOUT = 30
   `MAX_TEXT_LENGTH`: Maximum send message length.  
   
   `OPENAI_API_IMAGE_SIZE`: Generate image size. [ `1024x1024` | `256x256` | `512x512` ]  
+  `OPENAI_API_IMAGE_COUNT`: Number of generated images.   
   `OPENAI_API_IMAGE_RESPONSE_FORMAT`: The format in which the generated images are returned.  
   
   `OPENAI_API_USER` : Chat Completion Request Message Role Enum. [ `user` | `system` | `assistant` ]  
