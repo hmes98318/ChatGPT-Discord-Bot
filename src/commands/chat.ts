@@ -105,7 +105,7 @@ export const execute = async (client: Client, message: Message, args: string[]) 
 }
 
 export const slashExecute = async (client: Client, interaction: CommandInteraction) => {
-    let requestMessage = String(interaction.options.get("message", true));
+    let requestMessage = String(interaction.options.get("message", true).value);
 
     if (requestMessage.length > BOT_MAX_TEXT_LENGTH)
         return interaction.editReply({ content: `❌ | Message length exceed ${BOT_MAX_TEXT_LENGTH}.`, allowedMentions: { repliedUser: false } });

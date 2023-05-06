@@ -20,7 +20,7 @@
     "homepage": "https://github.com/hmes98318/ChatGPT-Bot#readme",
     "dependencies": {
         "console-stamp": "^3.1.1",
-        "discord.js": "^14.7.1",
+        "discord.js": "^14.11.0",
         "dotenv": "^16.0.3",
         "openai": "^3.2.1"
     },
