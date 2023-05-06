@@ -18,12 +18,12 @@ const GET_PROBLEMS = 'The service is experiencing some problems, please try agai
 export const name = 'image';
 export const aliases = ['img'];
 export const showHelp = true;
-export const method = 'img <prompts>';
+export const method = 'img <prompt>';
 export const description = 'Generate AI image';
 export const options = [
     {
-        name: "image",
-        description: "content",
+        name: "prompt",
+        description: "Generate AI image prompts",
         type: 3,
         required: true
     }
@@ -50,7 +50,7 @@ export const execute = async (client: Client, message: Message, args: string[]) 
 }
 
 export const slashExecute = async (client: Client, interaction: CommandInteraction) => {
-    let requestMessage = String(interaction.options.get("image", true));
+    let requestMessage = String(interaction.options.get("prompt", true));
 
     if (requestMessage.length > BOT_MAX_TEXT_LENGTH)
         return interaction.editReply({ content: `❌ | Message length exceed ${BOT_MAX_TEXT_LENGTH}.`, allowedMentions: { repliedUser: false } });

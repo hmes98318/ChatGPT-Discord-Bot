@@ -25,7 +25,7 @@ export const description = 'chat with AI';
 export const options = [
     {
         name: "message",
-        description: "content",
+        description: "chat with AI",
         type: 3,
         required: true
     }
