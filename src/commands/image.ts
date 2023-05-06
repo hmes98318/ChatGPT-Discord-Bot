@@ -1,7 +1,7 @@
 import * as dotenv from 'dotenv';
 import imageGenerator from '../openai/imageGenerator';
 
-import { Client, Message, CommandInteraction } from "discord.js";
+import { Client, Message, CommandInteraction, EmbedBuilder } from "discord.js";
 
 dotenv.config();
 
@@ -39,7 +39,25 @@ export const execute = async (client: Client, message: Message, args: string[]) 
 
     try {
         let result = await imageGenerator(args.join(' '));
-        return message.reply({ content: result, allowedMentions: { repliedUser: false } });
+
+        let imgEmbed = [];
+        for (let i = 0; i < result.length; i++) {
+            if (i == 0) {
+                imgEmbed.push(new EmbedBuilder()
+                    .setTitle(args.join(' '))
+                    .setTimestamp()
+                    .setURL(result[i].url)
+                    .setImage(String(result[i].url + '&.png')));
+            }
+            else {
+                imgEmbed.push(new EmbedBuilder()
+                    .setURL(result[i].url)
+                    .setImage(String(result[i].url + '&.png')));
+            }
+        }
+
+        //return message.reply({ content: result, allowedMentions: { repliedUser: false } });
+        return message.reply({ embeds: imgEmbed, allowedMentions: { repliedUser: false } });
     }
     catch (error) {
         console.log(`Image generator: Response error.`);
@@ -58,8 +76,26 @@ export const slashExecute = async (client: Client, interaction: CommandInteracti
 
     try {
         let result = await imageGenerator(requestMessage);
+
+        let imgEmbed = [];
+        for (let i = 0; i < result.length; i++) {
+            if (i == 0) {
+                imgEmbed.push(new EmbedBuilder()
+                    .setTitle(requestMessage)
+                    .setTimestamp()
+                    .setURL(result[i].url)
+                    .setImage(String(result[i].url + '&.png')));
+            }
+            else {
+                imgEmbed.push(new EmbedBuilder()
+                    .setURL(result[i].url)
+                    .setImage(String(result[i].url + '&.png')));
+            }
+        }
+
         console.log(`Image generator: Responded.`);
-        return interaction.editReply({ content: result, allowedMentions: { repliedUser: false } });
+        //return interaction.editReply({ content: result, allowedMentions: { repliedUser: false } });
+        return interaction.editReply({ embeds: imgEmbed, allowedMentions: { repliedUser: false } });
     }
     catch (error) {
         console.log(`Image generator: Response error.`);
