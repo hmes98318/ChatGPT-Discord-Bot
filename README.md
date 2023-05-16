@@ -102,8 +102,9 @@ You have to reply to the previous message to trigger but it will increase the co
 <img src="/imgs/img1.png" alt="img1" width="700"/>
 <img src="/imgs/img2.png" alt="img2" width="700"/>
 
+#### Image generation
+<img src="/imgs/img4.png" alt="img4" width="700"/>
+
 #### Remember previous few one message example
 <img src="/imgs/img3.png" alt="img3" width="700"/>
 
-#### Image generation
-<img src="/imgs/img4.png" alt="img4" width="700"/>
